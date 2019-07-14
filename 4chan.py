@@ -10,7 +10,7 @@ with open('boards.txt', 'r') as f:
 	boards = [i.strip() for i in f.readlines()]
 cache = {cache : '' for cache in boards}
 
-def r4chan():
+def get_img_thread_4chan():
 	board = random.choice(boards)
 	thread_nums = []
 	data = ''
@@ -42,11 +42,11 @@ def main(total_images):
 	if not os.path.exists('pics/'):
 		os.makedirs('pics/')
 	for i in range(total_images):
-		url,thrd = r4chan()
+		url,thrd = get_img_thread_4chan()
 		#webbrowser.open(url)
 		urllib.request.urlretrieve(url, 'pics/'+url.split('/')[-1])
 		time.sleep(2)
 
 
 if __name__ == '__main__':
-	main(1)
+	main(100)
